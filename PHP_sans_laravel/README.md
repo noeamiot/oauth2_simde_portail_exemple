@@ -7,6 +7,7 @@ Pour créer l'utilisateur allez sur http://localhost:8000/login/  puis dans l'on
 # Installation
 - Le projet utilise un client oauth2 PHP pour fonctionner: https://github.com/thephpleague/oauth2-client, il est installable via composer avec la commande : composer require league/oauth2-client
 - Le fichier config.php contient la définition de l'objet Provider, selon la configuration, les paramètres peuvent changer
+- Pour utiliser Oauth, on utilise un client dans la base de données du portail, celui-ci corresponds à une asso (celui de l'exemple appartient à l'asso simde). Afin que l'exemple fonctionne, il faut que l'utilisateur que vous avez créé appartienne à l'association du client (On note la différence entre client et utilisateur). Pour que votre utilisateur rejoigne l'association, allez sur le portail [http://localhost:8000/assos/simde] et cliquez sur rejoindre. Ensuite, dans la base de données, dans la table assos_members, dans la ligne qui corresponds à votre id et l'asso du client, remplir le tuple 'validated_by_id' avec un id existant (celui de samy par exemple: 45617374-6572-2065-6767-7321202b5f2b)
 
 # Bonnes pratiques
 Plusieurs choses sont à garder à l'esprit lors de l'utilisation de oauth2. Le but ici est de centraliser les connexions et de mieux respecter les droits des utilisateurs.
