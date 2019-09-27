@@ -8,4 +8,4 @@ Pour l'instant la documentation du portail des assos n'est pas complète, voici 
 
 # A venir
 * Un exemple qui utilise Laravel
-* D'autres exemples selons les demandes
+* D'autres exemples selon les demandes
