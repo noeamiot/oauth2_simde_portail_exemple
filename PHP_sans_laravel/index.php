@@ -16,12 +16,14 @@
         //Pour appeler le serveur des assos, il faut créer une nouvelle requête, ici, on demande les informations sur un utilisateur (les scopes demandés par le client doivent par exemple contenir au moins user-get-email)
         $request = $provider->getAuthenticatedRequest(
           'GET', //Protocol
-          'http://localhost:8000/api/v1/users/32ef8cc0-58bb-11e9-83ae-adcbe0a29dea', //Url à appeler (ici l'id d'utilisateur devrait déjà exister dans la bdd)
+          'http://localhost:8000/api/v1/users/' . $resourceOwner["id"] . '/assos/', //Url à appeler (ici on demande la liste des associations de l'utilisateur)
           $accessToken //l'access token
           //["foo" => "bar"], les paramètres pour la requête
         );
         $response = $provider->getParsedResponse($request); //Lancer la requête
-        echo "Utilisateur demandé: id : " . $response["id"] . ", nom : " . $response["name"];
+        for($i = 0; $i<count($response); $i++) {
+		echo "<p>asso: id : " . $response[$i]["id"] . ", nom : " . $response[$i]["shortname"] . ", rôle de l'utilisateur : " . $response[$i]["pivot"]["role_id"] . "</p>";
+      	}
       }
       else {
         ?>
