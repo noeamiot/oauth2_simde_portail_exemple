@@ -41,7 +41,7 @@ const authenticationFilter = function (req, res, next) {
         }).then(function (response) {
             // The token is not valid
             if (response.status !== 200) {
-                // Redirect to cas
+                // Redirect to portail
                 return res.redirect(authURL);
             }
         }).catch(function (err) {
@@ -83,7 +83,6 @@ const authenticationFilter = function (req, res, next) {
                     res.end(access_token);
 
                     // Get information from the connected user
-                    // Need to be admin to perform the request
                     axios({
                         method: 'GET',
                         url: `${portailURL}/api/v1/user`,
